@@ -944,12 +944,9 @@
       const STORAGE_KEY = 'theme';
       const btn = document.getElementById('theme-toggle');
 
-      // Apply saved theme, or fall back to system preference
+      // Apply saved theme — default is light
       const saved = sessionStorage.getItem(STORAGE_KEY);
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      if (saved === 'dark' || (saved === null && prefersDark)) {
-        root.setAttribute('data-theme', 'dark');
-      }
+      if (saved === 'dark') root.setAttribute('data-theme', 'dark');
 
       btn.addEventListener('click', function () {
         const isDark = root.getAttribute('data-theme') === 'dark';
